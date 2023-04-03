@@ -1,0 +1,692 @@
+\documentclass[12pt, openany]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[frenchb]{babel}
+\usepackage{libertine}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+
+\usepackage[Glenn ]{fncychap}
+
+\graphicspath{dir-list}
+
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+\newcommand{\hsp}{\hspace{20pt}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{document}
+\begin{titlepage}
+  \begin{sffamily}
+  \begin{center}
+
+    % Upper part of the page. The '~' is needed because \\
+    % only works if a paragraph has started.
+    % 
+
+    \textsc{\large république algérienne démocratique et populaire}\\[0.2cm]
+    \textsc{\large ministère de l'enseignement supérieur de la recherche scientifique}\\[0.2cm] 
+	\textsc{\large université ferhat abbas 1}\\[0.8cm]
+	
+	\includegraphics[scale=0.8]{logo.PNG}~\\[0.5cm]
+	\textsc{\Large Faculté Des Sciences}\\[0.2cm]
+	\textsc{\Large Département d'informatique}\\ [0.8cm]
+
+    % Title
+    
+    \textsf{   \Huge   \bfseries MÉMOIRE DE FIN D'ÉTUDE}\\ [0.4cm]
+    \textsf{  \LARGE   En vue de l'obtention du diplôme de LICENCE en Informatique}\\[1.2cm]
+ 	\HRule \\[0.4cm]
+ 	\textsf{ \Huge \textbf{Théme}}\\[0.5cm]
+ 	\textsf{\LARGE Outil d'aide à la préparation de solutions médicamenteuses}
+    \HRule \\[3cm]
+  %  \includegraphics[scale=0.2]{img2.JPG}
+%    \\[2cm]
+
+    % Author and supervisor
+    \begin{minipage}{0.5\textwidth}
+      \begin{flushleft} \Large \raggedright
+        \textsc{Réalisé par :}\\
+      
+       	\textsf{Chougui Abdeldjalil \\ Moussaoui Achraf}
+       	
+       
+      \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushright} \Large \raggedright
+
+        \textsc{  Encadré par  : }\\ \textsf{ Benmahmoud Sabrina  }
+      \end{flushright}
+    \end{minipage}
+
+    \vfill
+
+    % Bottom of the page
+    {\large \textsc{promotion : 2019/2020}}
+
+  \end{center}
+  \end{sffamily}
+\end{titlepage}
+\textbf{}\\ \\ \\ \\ \\ \\ \\
+\begin{center}
+\textsf{ \huge \textbf{Remerciement}}
+\end{center} \
+\addcontentsline{toc}{chapter}{Remerciement}
+\Large
+\vspace{-2cm}
+\begin{center}
+	\textit{\paragraph{} Au nom d’Allah le tout puissant, un grand merci lui revient pour nous avoir donnée la foi, la volonté, le courage et surtout, de nous avoir permis d’en
+		arriver là ; \\[0.5cm] Nous tenons aussi à adresser nos vifs remerciements à notre encadreur \\[0.5cm] Madame Benmahmoud Sabrina qui par ses encouragements renouvelés, ses remarques pertinentes, ses conseils, sa disponibilité malgré la mauvaise période que nous traversons, et son soutien qui ne nous ont jamais fait défaut, nous avons pu achever notre travail dans les meilleures conditions ;\\[0.5cm]Nos remerciements vont également nos parents qui nous ont toujours aidés et soutenue .  \\[0.5cm] Nous tenons aussi à remercier tous ceux qui ont contribué à ce modeste travail.
+	}
+\end{center}
+
+\newpage
+\large
+
+\newpage
+\textbf{}\\ \\ \\ \\ \\ \\ \\
+\begin{center}
+	\textbf{} 
+	\textsf{ \huge \textbf{Résumé}}
+\end{center}
+
+\addcontentsline{toc}{chapter}{Résumé}
+\large \paragraph{}
+Ce travail est réalisé dans le cadre d'un mémoire de fin d’étude pour l’obtention du diplôme de licence académique en informatique, il consiste à créer une application mobile sous Android qui permet aux opérateurs pharmaciens de préparer une solution de médicaments pour perfusion d'un malade, à partir d'une base de données de médicaments (locale). 
+\paragraph{}Dans cette mémoire vous pourrez suivre les étapes pris pour la création de cette application mobile, la première étape de la création est l'analyse des besoins qui consiste a citer l'objectif de l'application et les besoins fonctionnels qui devrait être réalisé, et puis l'étape de conception qui inclut quelques diagrammes UML pour réaliser l’étude conceptuelle de système, ensuite l’étape de réalisation dans laquelle on transforme nos diagrammes en code source et tester notre application sur plusieurs appareilles.
+
+\tableofcontents
+\vspace{110ex}
+
+\listoffigures
+\addcontentsline{toc}{chapter}{Table Des Figures}
+\newpage
+
+\begin{center}
+	\textsf{ \huge \textbf{Introduction Générale}}
+\end{center}
+\addcontentsline{toc}{chapter}{Introduction Générale}
+\large \paragraph{} 
+Le marché de la téléphonie portable connait actuellement une véritable révolution ,d'un simple téléphone portable pour émettre des appels à un téléphone évolué doté de capacités proches d'un véritable ordinateur appelé Smartphone.
+
+
+\paragraph{}
+Aujourd'hui  . . . le monde connait une progression rapide dans l’utilisation des Smartphone, grâce aux applications mobiles .Ces dernières sont capables de satisfaire les besoins actuels des utilisateurs dans plusieurs domaines dans nos vies quotidienne , et facilitent l'accomplir des tâches et on offrant plusieurs services. 
+
+Cette progression d'utilisation des Smartphones a permis de faire une collaboration entre le domaine de la santé et les application mobiles qui peut aider a augmenter les capacités des services réalisée, un de ces services est la préparation des solution médicamenteuses.  
+\paragraph{}
+La préparation des solutions médicamenteuses est une tache très intéressante dans le processus de traitement d'une maladie , L’utilisation de tout médicament expose à des risques multiples, liés au médicament lui-même (effets indésirables) ou aux conditions entourant sa préparation et son administration (erreurs, interactions, risque infectieux…), et pour minimiser le taux des erreurs lors de la préparation (faute des calculs , choix de médicaments . . ) on trouve que la solution c'est d'Informatiser tout ce qui concerne la préparation de solutions médicamenteuse par la création d'une application mobiles destiné aux opérateurs pharmaciens.
+
+\paragraph{}
+Notre projet de fin d'études s'inscrit dans un cadre général de conception et de développement d'une application mobile qui permet aux opérateurs pharmaciens de préparer une solution de médicaments pour perfusion d'un malade, à partir d'une base de données de médicaments (locale).
+\paragraph{}
+Nous allons détailler le projet dans ce rapport sur trois chapitres :
+\begin{enumerate}
+	\item  Le premier chapitre se focalise sur l'analyse des besoins et la présentation générale du cadre de notre projet.
+	\item Le deuxième chapitre sera réservé pour la Conception qui nous permet de décrire sans ambiguïté l'application à développer avec une modélisation formelle à travers des diagrammes de langage UML.
+	\item Le troisième chapitre est dédié à la réalisation, où nous trouvons la présentation de l'environnement de développement, l’explication de fonctionnement de notre application en présente des  interfaces finies.
+\end{enumerate}
+
+
+
+\chapter{Analyse des Besoins}
+\newpage
+\section{Introduction}
+\large
+\paragraph{} La première étape de la réalisation d'un projet consiste à analyser la situation pour tenir compte des contraintes répondant aux besoins d'utilisateur.
+\paragraph{} Dans ce chapitre nous présentons les objectifs de notre application,  ce qui nous amène à
+identifier les possibilités et les besoins fonctionnels et non fonctionnels de l’application. ces derniers donnent une idée générale sur le fonctionnement de notre application.
+\section{Objectif Du Projet}
+\paragraph{}L’objectif de ce projet est la conception et la création d’une application Mobile Android, qui permet aux opérateurs pharmaciens de préparer une solution de médicaments pour perfusion d'un malade, à partir d'une base de données de médicaments (locale).
+\section{Spécification Des Besoins}
+\paragraph{} L’application doit satisfaire les besoins fonctionnels qui seront exécutés par le système et les besoins non fonctionnels qui perfectionnent la qualité logicielle du système.
+\subsection{Les besoins fonctionnels}
+\paragraph{}
+L’application à réaliser doit offrir un ensemble de fonctionnalités qui doivent être mises en relation avec un ensemble de besoins utilisateur. Ces derniers définissent les services que les utilisateurs s’attendent à voir fournis par cette application. \\
+Notre application doit couvrir principalement les besoins fonctionnels suivants : \\
+\begin{itemize}\renewcommand {\labelitemi }{$\bullet $}
+	\item \textbf{Les besoins fonctionnels attendus :}
+	\begin{itemize}
+		\vspace{5mm}
+		
+		
+		\item Calcule la dose et le volume à administrer.
+		\item L'indication de type de poche de sérum le plus adaptée à la préparation.
+		\item Calcule les reliquats (restes).
+		\item Calcule le prix des reliquats jetés.
+		\item Calcule la quantité consommé des médicaments. 
+		\item La Gestion et La mise à jour de la base de données de médicaments (ajout, recherche, modification, suppression).
+		\item Effectuer un bilan du jour.
+		\item Enregistre le bilan du jour sous forme d'un PDF.
+		\vspace{5mm}
+	\end{itemize}
+	
+	\item \textbf{Les besoins fonctionnels additifs : }
+	\begin{itemize}
+		\vspace{5mm}
+		\item Authentification d'utilisateur.
+		\item L'affichage de la liste des médicaments.
+		\item Traitement d'une ordonnance qui contient jusqu'à 5 médicaments a la fois.
+		\item Changer le nom d'utilisateur.
+		\item Changer le mot de passe.
+		\item Changer le Thème.
+		
+ 	\end{itemize}
+\end{itemize}
+ \subsection{Les besoins non fonctionnels}
+\paragraph{} 
+Ce sont des exigences qui ne concernent pas spécifiquement le comportement du système
+mais plutôt identifient des contraintes internes et externes du système, telles que les exigences en matière de performances, les dépendances du projet, de facilité de maintenance, d’extensibilité et de fiabilité. \\
+Dans le cadre de ce travail, l'application devra répondre à ces besoins : \\
+\begin{itemize}\renewcommand {\labelitemi }{$\bullet $}
+	\item \textbf{Les Contraintes techniques :}
+	\begin{itemize}
+		\vspace{5mm}
+		\item \textbf{la sécurité :} tous les accès d'utilisateurs doivent être protégés par un login et un mot de passe pour parvenir à la sécurité de l'application.
+		\item \textbf{Validité :} réaliser exactement les taches définies dans la spécification.
+		\item \textbf{la performance :} temps de réponse court.
+		\item \textbf{la fiabilité :} Les données fournies par l'application doivent êtres fiables et la solution doit rendre des résultats corrects.
+		\vspace{5mm}
+	\end{itemize}
+\item \textbf{Les Contraintes ergonomiques :}
+	\begin{itemize}
+		\vspace{5mm}
+		\item \textbf{Brièveté :} Limiter le travail de lecture, d'entrée et les étapes par lesquelles doivent passer les usagers.
+		\item \textbf{Guidage :} L'ensemble des moyens mis en œuvre pour conseiller, orienter, informer et conduire l'utilisateur lors de ses interactions avec l'application.
+		\item \textbf{prise en compte de l'expérience de l'utilisateur :} Le système doit respecter le niveau d'expérience de l'utilisateur donc il doit être simple, compréhensible et facile à utiliser.
+		\item \textbf{Groupement/Distinction entre Items :} groupement des différents éléments visuels de façon cohérente et ordonnée.
+	\end{itemize}
+\end{itemize}
+\section{Conclusion}
+Dans ce chapitre, nous avons essayé d’établir une étude théorique de l’application par la définition de notre objectif et puis la spécification des besoins fonctionnels et non fonctionnels du système résultant, ce qui correspondait aux différentes activités de la première phase du cycle de développement du notre système. Dans le chapitre suivant, nous étudierons la phase de conception. 
+
+
+
+
+\chapter{Conception}
+\newpage
+\section{Introduction}
+\large
+\paragraph{} La conception est l’étape la plus importante dans le cycle d’implémentation des applications informatiques. Elle consiste à façonner le système et à lui donner une forme répondant à tous les besoins et les exigences. 
+\paragraph{}Dans ce chapitre nous allons entamer une  partie cruciale de développement de l’application et qui consiste un pont entre la spécification des besoins et la réalisation. Elle comporte une modélisation conceptuelle suivant la méthodologie UML, D’abord, on présente le diagramme de cas d’utilisation et de séquences pour spécifier les besoins fonctionnels de notre système. Après, nous avons réalisé le diagramme de classes pour la conception de la base de données. Nous avons utilisé StarUML comme outil de modélisation de nos trois diagrammes choisis dans notre conception.
+\section{Langage de modélisation unifie(UML)}
+\subsection{Définition}
+\raggedright\paragraph{}UML (Unified Modeling Language) est un langage de modélisation unifié permet de modéliser une application logicielle d’une façon standard dans le cadre de conception orienté objet.
+Il définit un ensemble de diagrammes permettant de représenter un système ou un programme informatique et son utilisation prévue, UML n’est pas limité à l’ingénierie du logiciel, mais est également utilisé dans l’ingénierie des systèmes. La représentation des structures organisationnelles peut être unifiée par la modélisation du langage UML. La mise en place de logiciels de conception intégrée pour un projet peut aussi être à l’acte (Diagrammes) d’un code initial du programme.\\
+
+\begin{figure}[! h]
+	\centering
+	\includegraphics[scale=0.52]{UML-logo.PNG}~\\
+	\caption{Logo d'UML}
+\end{figure}
+
+\raggedright\subsection{Les différents types diagrammes d’UML}
+\paragraph{}Les diagrammes sont dépendants hiérarchiquement (structure, comportement et interaction) et se complètent, de façon à permettre la modélisation d'un projet tout au long de son cycle de vie. Il en existe quatorze depuis UML 2.3.
+
+\begin{figure}[! h]
+	\centering
+	\includegraphics[scale=1]{uml-diags.png}
+	\caption{Les différents types diagrammes d’UML}
+	\label{fig:screenshot001}
+\end{figure}
+\subsection{Les avantages d'UML}
+\begin{itemize}\renewcommand {\labelitemi }{$\bullet $}
+	\item  UML est un langage formel et normalisé : il permet un gain de précision et de stabilité.
+	\item UML est un support de communication performant : il permet grâce à sa représentation graphique, d'exprimer visuellement une solution objet, de faciliter la comparaison et l'évolution de solution.
+	\item Son caractère polyvalent et sa souplesse en font un langage universel.
+\end{itemize}
+
+\section{Diagramme de cas d'utilisation}
+\subsection{Définition}
+\paragraph{}Les diagrammes de cas d’utilisation sont utilisés pour donner une vision globale du comportement fonctionnel d’un système logiciel. Ils sont utiles pour la présentation de toutes les interactions des utilisateurs avec le
+système
+
+Un cas d'utilisation représente une unité discrète d'interaction entre un utilisateur (humain ou machine) et un système. Il est une unité significative de travail. Dans un diagramme de cas d'utilisation, les utilisateurs sont appelés acteurs, ils interagissent avec les cas d'utilisation.
+
+\subsection{Identification des acteurs}
+\paragraph{}Les acteurs sont des entités externes d’un rôle joué par une personne, un processus ou une chose interagit avec le système.
+
+Dans notre système, nous pouvons identifier le Pharmacien comme un acteur.
+\vspace{5mm}
+\begin{itemize} \renewcommand {\labelitemi }{$\bullet $}
+	\item Le Pharmacien: Il peut accéder à l’application par la saisie d’un identifiant et un mot de passe. Il peut préparer une solution médicamenteuse, gérer la base de données des médicaments et d'autres fonctionnalités.
+\end{itemize}
+\newpage
+\subsection{Diagramme de cas D'utilisation globale}
+\begin{figure}[! h]
+	\centering
+	\hspace{-20mm}
+	\includegraphics[scale=0.45]{UseCaseDiagram1.png}\\ %pour aligner a droite scale=0.43
+	\caption{Diagramme de cas D'utilisation globale}
+\end{figure}
+
+\section{Diagramme De Classe}
+\subsection{Définition}
+\raggedright\paragraph{}Il représente les classes intervenant dans le système. Le diagramme de classe est une représentation statique des éléments qui composent un système et de leurs relations.
+\\ Une classe décrit les responsabilités, le comportement et le type d'un ensemble d'objets. Les éléments de cet ensemble sont les instances de la classe.
+\\ Les classes peuvent être liées entre elles grâce au mécanisme d'héritage qui permet de mettre en évidence des relations de parenté. D'autres relations sont possibles entre des classes, chacune de ces relations est représentée par un arc spécifique dans le diagramme de classes. Elles sont finalement instanciées pour créer des objets
+\subsection{Diagramme De Classe De L'application}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.1\linewidth, height=0.7\textheight]{ClassDiagram1}
+	\caption{Diagramme De Classe De L'application}
+	\label{fig:classdiagram1}
+\end{figure}
+\section{Conclusion}
+\paragraph{}
+La phase de conception était importante pour pouvoir visualiser le fonctionnement de notre application d'une façon abstraite, En clair, comme nous venons de le voir, ce chapitre était consacré, à la conception des diagrammes d’UML pour associe au cette application et des descriptions pour mieux comprendre la fonctionnalité de cette application.
+\paragraph{}Le chapitre suivant fera le thème de la phase de réalisation, cette dernière se concentre sur l’élaboration de l’application ainsi que l’observation des résultats obtenus.
+
+\chapter{Réalisation}
+\newpage
+\section{Introduction}
+\large
+\paragraph{} Après avoir achevé l’étape de conception de l’application, on va entamer dans ce chapitre la partie réalisation et implémentation en exposant l’environnement du travail et les outils de développements choisis ainsi que les interfaces de notre application.
+\paragraph{} A la fin de ce chapitre,  les objectifs doivent avoir été atteints et le système doit être prêt pour être exploité par les utilisateurs finaux.
+\section{Environnement de développement :}
+\paragraph{}Il y'a deux environnements précisés sont : Environnement logiciel et matériel.
+\subsection{Environnement matériel : }
+L’application Pharmedic  est réalisé par les ordinateurs et les Smartphones suivants :
+\paragraph{}\textbf{Ordinateur 01 :}\\[0.4cm]
+	\begin{itemize}\renewcommand {\labelitemi }{$\bullet $}
+		\item La marque :DELL
+		\item Processeur : intel®core ™ i5-4200U CPU .
+		\item Mémoire : 4 Go RAM. 
+		\item Système d’exploitation : Windows 8.1. 
+		\item Type du système : système d’exploitation 64 bits.
+	\end{itemize}
+\paragraph{}\textbf{Ordinateur 02 :}\\[0.4cm]
+	\begin{itemize}\renewcommand {\labelitemi }{$\bullet $}
+		\item La marque :HP
+		\item Processeur : intel®core ™ i5-4200U CPU.
+		\item Mémoire : 4 Go RAM. 
+		\item Système d’exploitation : Windows 7. 
+		\item Type du système : système d’exploitation 64 bits.
+	\end{itemize}
+\paragraph{}\textbf{Smartphone 01 :}\\[0.4cm]
+	\begin{itemize}\renewcommand {\labelitemi }{$\bullet $}
+	\item La marque :Samsung.
+	\item Modèle: Galaxy J5 Pro.
+	\item Android: 6.0.1. 
+	\end{itemize}
+\paragraph{}\textbf{Smartphone 02 :}\\[0.4cm]
+	\begin{itemize}\renewcommand {\labelitemi }{$\bullet $}
+	\item La marque :Samsung.
+	\item Modèle: Galaxy S6 Edge.
+	\item Android: 6.0.1. 
+	\end{itemize}
+\subsection{Environnement logiciel : }
+\paragraph{}Pour la réalisation de notre application, nous avons au recours différents outil et logiciel de développement, outil pour la gestion de la base de données , logiciel de modélisation , logiciel pour la rédaction de ce rapport.
+\addcontentsline{toc}{subsection}{Android Studio}
+\subsubsection{ \large Android Studio :}
+\paragraph{}Android Studio est un environnement de développement pour développer des applications mobiles Android. Il est basé sur IntelliJ IDEA et utilise le moteur de production Gradle. Il peut être téléchargé sous les systèmes d'exploitation Windows, macOS, Chrome OS et Linux.
+Il propose aussi des outils pour gérer le développement d’applications multilingues et permet de visualiser la mise en page des différents types et tailles d’écrans avec des résolutions variées simultanément, Il intègre par ailleurs un émulateur permettant de faire tourner un système Android virtuel sur un ordinateur. \\[0.3cm]
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.6\linewidth]{android-studio}
+	\caption{Logo D'Android Studio}
+	\label{fig:android-studio}
+\end{figure}
+\addcontentsline{toc}{subsection}{Framework Flutter}
+\subsubsection{ \large Framework Flutter :}
+\paragraph{} Flutter est un framework de développement d'interface utilisateur gratuit et open source créé par Google. Jusque-là, il était utilisé pour développer des applications pour Android et iOS.
+\paragraph{}En effet ce framework est utilisé pour tout ce qui est interface utilisateur. Mais aujourd’hui Flutter se fait surtout connaître pour sa capacité à concevoir des applications natives multiplateforme pour Android et iOS (Windows/Mac/Linux sont également supportés).
+\paragraph{} L’équipe de Flutter provient essentiellement du Web (plus particulièrement de Chrome) et a essayé d’adapter sa philosophie au monde du mobile. Ils se sont appuyés pour cela sur Skia, le moteur qui fait partie intégrante de Chrome ou encore de toute la gestion du texte d’Android. \\[0.3cm]
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.6\linewidth]{flutter}
+	\caption{Logo De Flutter}
+	\label{fig:flutter}
+\end{figure}
+\addcontentsline{toc}{subsection}{Language Dart}
+\subsubsection{ \large Language Dart :}
+\paragraph{}Dart est un langage de programmation optimisé pour les applications sur plusieurs plateformes. Il est développé par Google et est utilisé pour créer des applications mobiles, de bureau, de serveur et web.
+\paragraph{}Dart est un langage orienté objet, basé sur la classe, récupérateur de mémoire avec une syntaxe de type C1 .Il prend en charge les interfaces, les mixins,les classes abstraites.\\[0.3cm]
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.6\linewidth]{dart}
+	\caption{Logo De Language Dart}
+	\label{fig:dart}
+\end{figure}
+\addcontentsline{toc}{subsection}{SQLite}
+\subsubsection{\large SQLite :}
+\paragraph{}
+SQLite est une base de données open source, qui supporte les fonctionnalités standards des bases de données relationnelles comme la syntaxe SQL, les transactions et les prepared statement. La base de données nécessite peu de mémoire lors de l'exécution (env. 250 ko), ce qui en fait un bon candidat pour être intégré dans d'autres environnements d'exécution.
+\paragraph{}SQLite est intégrée dans chaque appareil Android. L'utilisation d'une base de données SQLite sous Android ne nécessite pas de configuration ou d'administration de la base de données.
+Vous devez uniquement définir les instructions SQL pour créer et mettre à jour la base de données. Ensuite, celle-ci est gérée automatiquement pour vous, par la plate-forme Android.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.6\linewidth]{SQLite}
+	\caption{Logo De SQLite}
+	\label{fig:sqlite}
+\end{figure}
+\addcontentsline{toc}{subsection}{SideSync}
+\subsubsection{\large SideSync :}
+\paragraph{}Samsung SideSync pour Android est une application de synchronisation de données proposée par Samsung mais fonctionnant sur tous les smartphones et tablettes Android, quelle que soit leur marque. Pour l'utiliser avec votre ordinateur, vous devez au préalable télécharger Samsung SideSync pour Windows ou Mac. Le logiciel de synchronisation de Samsung vous offre la possibilité de partager l'écran et les données entre votre PC et votre appareil mobile. Vous pouvez ainsi passer des appels ou encore envoyer des SMS directement depuis votre PC, en utilisant la carte SIM insérée dans votre smartphone.
+\\ Dans Notre cas on utilise l'application SideSync pour éxcuter notre application Pharmedic Sur une appareil réel (Physique) et remplacer l'émulateur AVD(Android Virtual Device) qui nécessite un peut plus de ressources matériels.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.3\linewidth,height=0.15\linewidth]{side}
+	\caption{Logo De SideSync}
+	\label{fig:side}
+\end{figure}
+\addcontentsline{toc}{subsection}{Star UML}
+\subsubsection{ \large Star UML :}
+\paragraph{}StarUML est un logiciel de modélisation UML, qui a été "cédé comme open source" par son éditeur, à la fin de son exploitation commerciale (qui visiblement continue ...), sous une licence modifiée de GNU GPL.
+\paragraph{}StarUML est écrit en Delphi1, et dépend de composants Delphi propriétaires (non open-source).
+\paragraph{}StarUML gère la plupart des diagrammes spécifiés dans la norme UML 2.0, Parmi ces Diagrammes . . les Diagrammes qui on a Modélisé dans Notre Projet (Cas D'utilisation+Diagramme de Classe).
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=\linewidth]{Staruml_inter}
+	\caption{Interface De Star UML}
+	\label{fig:starumllogo}
+\end{figure}
+\addcontentsline{toc}{subsection}{Latex}
+\subsubsection{ \large Latex :}
+\paragraph{} LaTeX est un langage et un système de composition de documents.LaTeX permet de rédiger des documents dont la mise en page est réalisée automatiquement en se conformant du mieux possible à des normes typographiques. Une fonctionnalité distinctive de LaTeX est son mode mathématique, qui permet de composer des formules complexes.
+\paragraph{}LaTeX est particulièrement utilisé dans les domaines techniques et scientifiques pour la production de documents de taille moyenne (tels que des articles) ou importante (thèses ou livres, par exemple).\\ Dans Notre cas on a utilisé Latex pour la rédaction de ce rapport.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{latex}
+	\caption{Logo De Latex}
+	\label{fig:latex}
+\end{figure}
+
+Et pour L'utilisation De latex il s'agit d'installer TexStudio.
+\addcontentsline{toc}{subsection}{TexStudio}
+\subsubsection{\large TexStudio :}
+\paragraph{}TeXstudio (anciennement TeXMakerX) est un environnement de développement intégré (IDE) très puissant pour écrire des documents LaTeX en format PDF ou autre, qui s’affichent de la même manière quelque soit le système d’exploitation. L’utilisation de TeXstudio exige la présence d'une distribution Latex : c’est la partie la plus importante, qui comporte tous les composants de LATEX et sera chargée de transformer le code tapé dans l’éditeur LATEX en un document PDF ou PostScript.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\linewidth]{texstudio}
+	\caption{Interface De TexStudio}
+	\label{fig:tex}
+\end{figure}
+\newpage
+\section{Présentation des Interfaces de l'application :}
+\paragraph{}Dans cette partie on va représenter les différentes interfaces de notre application et on va faire une petite explication de chaque étape.
+\\[0.3cm] La première interface qui s'affiche c'est une interface qui contient un simple logo avec le nom de l'application. \vspace{-1cm}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.6\linewidth]{CapturesPhone/1f_samsung-galaxynote5-gold-portrait}
+	\caption{Page D'accueil}
+	\label{fig:1fsamsung-galaxynote5-gold-portrait}
+\end{figure}
+\\
+Ensuite Il s'affiche Les Pages Introduction (Introduction Screen) qui Présente les fonctionnalité de notre application. \\
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=19cm]{"CapturesPhone/0.png"}
+	\caption{Les Interfaces Introduction}
+	\label{fig:sans-titre-1}
+\end{figure}
+\newpage
+Dans le cas si vous êtes un nouveau utilisateur il devrait s'inscrire dans notre application.
+\begin{figure}[!ht]
+	\hspace{1cm}
+	\begin {minipage}[t]{4cm}
+	\centering
+	\includegraphics [ width =9 cm ]{CapturesPhone/6_samsung-galaxynote5-gold-portrait.png}
+	\end {minipage}
+	\hspace{2.5cm}
+	\begin {minipage}[t]{4cm}
+	\raggedright
+	\includegraphics [ width =9 cm ]{CapturesPhone/7_samsung-galaxynote5-gold-portrait.png}
+	\end {minipage}
+	\caption{Sign Up}
+\end{figure}
+\\
+Si Vous êtes Déjà inscrit il devrait juste entre le mot de passe pour accéder a l'application.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.6\linewidth]{CapturesPhone/35_samsung-galaxynote5-gold-portrait}
+	\caption{Authentification}
+	\label{fig:1fsamsung-galaxynote5-gold-portrait}
+\end{figure}
+\newpage
+Lorsque on entre dans l'application on a 5 interface principaux on va découvrir une après l'autre.
+\\[0.5cm]
+La première Interface Principale est la liste des médicaments . . on peut ajouter,supprimer ,modifier et rechercher un médicament avec la fonction de \textbf{AutoComplete}.
+
+%*************************************************************************************************
+\begin{figure}[!ht]
+	\hspace{1cm}
+	\begin {minipage}[t]{4cm}
+	\centering
+	\includegraphics [ width =9.5 cm ]{CapturesPhone/8_samsung-galaxynote5-gold-portrait.png}
+	\end {minipage}
+	\hspace{2.5cm}
+	\begin {minipage}[t]{4cm}
+	\raggedright
+	\includegraphics [ width =9.5 cm ]{CapturesPhone/38_samsung-galaxynote5-gold-portrait.png}
+	\end {minipage}
+	\caption{La Liste Des Médicaments}
+\end{figure}
+
+%********************************************************************************************
+\begin{figure}[!h]
+	\centering
+	
+	\includegraphics[width=16cm]{CapturesPhone/200.png}
+	\caption{Gestion De La Liste Des Médicaments}
+	\label{fig:1}
+\end{figure}
+
+La deuxième Interface principale c'est L'interface Préparer Solution.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.6\linewidth]{CapturesPhone/12_samsung-galaxynote5-gold-portrait}
+	\caption{Préparer Solution}
+	\label{fig:12samsung-galaxynote5-gold-portrait}
+\end{figure}
+\\ Pour Préparer Une solution Il faut passer par 3 étapes : Ajouter Patient, Choix des médicaments, remplir les posologies.
+\begin{figure}[!ht]
+\hspace{1cm}
+\begin {minipage}[t]{4cm}
+\centering
+\includegraphics [ width =9 cm ]{CapturesPhone/13_samsung-galaxynote5-gold-portrait.png}
+\end {minipage}
+\hspace{2.5cm}
+\begin {minipage}[t]{4cm}
+\raggedright
+\includegraphics [ width =9 cm ]{CapturesPhone/14_samsung-galaxynote5-gold-portrait.png}
+\end {minipage}
+\caption{Ajouter Patient}
+\end{figure}
+\newpage Ici On choisit les médicaments a utilisé dans une ordonnance on peut utilise de 1 a 5 médicaments a la fois. 
+\begin{figure}[!ht]
+\hspace{1cm}
+\begin {minipage}[t]{4cm}
+\centering
+\includegraphics [ width =9 cm ]{CapturesPhone/15_samsung-galaxynote5-gold-portrait.png}
+\end {minipage}
+\hspace{2.5cm}
+\begin {minipage}[t]{4cm}
+\raggedright
+\includegraphics [ width =9 cm ]{CapturesPhone/16_samsung-galaxynote5-gold-portrait.png}
+\end {minipage}
+\caption{Choix de médicament}
+\end{figure}
+\\ La dernière étape c'est de remplir les posologie et clique sur Au Résultat pour voir les résultats.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=18cm]{"../../Downloads/Sans titre (2)"}
+	\caption{Remplir Posologie et Voir Résultat}
+	\label{fig:1}
+\end{figure}
+\newpage
+La Troisième Interface Principale C'est L'interface de Bilan Du Jour qui s'affiche les ordonnances traité et la quantité consommé de chaque médicaments en volume et en nombre de flacon.
+
+\begin{figure}[!ht]
+	\hspace{1cm}
+	\begin {minipage}[t]{4cm}
+	\centering
+	\includegraphics [ width =9 cm ]{CapturesPhone/19_samsung-galaxynote5-gold-portrait.png}
+	\end {minipage}
+	\hspace{2.5cm}
+	\begin {minipage}[t]{4cm}
+	\raggedright
+	\includegraphics [ width =9 cm ]{CapturesPhone/20_samsung-galaxynote5-gold-portrait.png}
+	\end {minipage}
+	\caption{Bilan Du Jour}
+\end{figure}
+ La Quatrième Interface principale est celle de reliquat , il affiche le reliquat de chaque médicament avec le temps reste de stabilité et le prix de perte en cas ou le reliquat était périmé il s'affiche en premier avec une couleur rouge.
+\begin{figure}[!ht]
+	\hspace{1cm}
+	\begin {minipage}[t]{4cm}
+	\centering
+	\includegraphics [ width =9 cm ]{CapturesPhone/21_samsung-galaxynote5-gold-portrait.png}
+	\end {minipage}
+	\hspace{2.5cm}
+	\begin {minipage}[t]{4cm}
+	\raggedright
+	\includegraphics [ width =9 cm ]{CapturesPhone/22_samsung-galaxynote5-gold-portrait.png}
+	\end {minipage}
+	\caption{Liste Des Reliquats}
+\end{figure}
+\newpage
+On a un cas très intéressant lorsque on essaye de préparer une solution avec un médicament qui a un reliquat périme il s'affiche une boite de dialogue pour choisir entre une suppression \textbf{automatique} du reliquat périme ou une suppression \textbf{manuelle} qu'il va dirigé l'utilisateur vers la page reliquat pour supprimer le reliquat périme (en rouge) et identifier avec un signe jaune.
+%*******************************************************************************************************
+\begin{figure}[!ht]
+	\hspace{0cm}
+	\begin {minipage}[t]{4cm}
+	\centering
+	\includegraphics [ width =11 cm ]{CapturesPhone/36_samsung-galaxynote5-gold-portrait.png}
+	\end {minipage}
+	\hspace{2.5cm}
+	\begin {minipage}[t]{4cm}
+	\raggedright
+	\includegraphics [ width =11 cm ]{CapturesPhone/37_samsung-galaxynote5-gold-portrait.png}
+	\end {minipage}
+	\caption{Suppression De Reliquat Périme}
+\end{figure}
+
+
+
+
+
+%******************************************************************************************
+\newpage
+
+La cinquième Interface principale est l'interface de paramétrés, tu peux changer le nom d'utilisateur, le mot de passe, le thème (clair ou sombre), et même voir le rapport de fin du journée et le télécharger en format PDF. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.6\linewidth]{CapturesPhone/23_samsung-galaxynote5-gold-portrait}
+	\caption{Interface Paramétrés}
+	\label{fig:23samsung-galaxynote5-gold-portrait}
+\end{figure}
+
+\begin{figure}[!ht]
+	\hspace{1cm}
+	\begin {minipage}[t]{4cm}
+	\centering
+	\includegraphics [ width =9 cm ]{CapturesPhone/24_samsung-galaxynote5-gold-portrait.png}
+	\end {minipage}
+	\hspace{2.5cm}
+	\begin {minipage}[t]{4cm}
+	\raggedright
+	\includegraphics [ width =9 cm ]{CapturesPhone/25_samsung-galaxynote5-gold-portrait.png}
+	\end {minipage}
+	\caption{Changer Nom D'utilisateur et Le Mot de Passe}
+\end{figure}
+\newpage
+\begin{figure}[!ht]
+	\hspace{1cm}
+	\begin {minipage}[t]{4cm}
+	\centering
+	\includegraphics [ width =9 cm ]{CapturesPhone/26_samsung-galaxynote5-gold-portrait.png}
+	\end {minipage}
+	\hspace{2.5cm}
+	\begin {minipage}[t]{4cm}
+	\raggedright
+	\includegraphics [ width =9 cm ]{CapturesPhone/27_samsung-galaxynote5-gold-portrait.png}
+	\end {minipage}
+	\caption{Changer Le Thème}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=19cm]{"CapturesPhone/3.png"}
+\caption{Rapport de fin du journée PDF}
+\label{fig:sans-titre-1}
+\end{figure}
+\newpage
+Quelques Interface avec le thème sombre.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=19cm]{"CapturesPhone/100.png"}
+	\caption{Le Thème Sombre}
+	\label{fig:sans-titre-1}
+\end{figure}
+\section{Une partie de code source <Fonction de Calcul>}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{src1}
+	\caption{Code Source Partie 1}
+	\label{fig:src1}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\linewidth]{src2}
+	\caption{Code Source Partie 2}
+	\label{fig:src1}
+\end{figure}
+
+\subsection{Explication De La Fonction De Calcul}
+\paragraph{}
+Au Début on fait une boucle for sur les médicaments sélectionné d'une ordonnance ca dépend de 1 a 5, pour chaque médicament on a listesDesPosologie qui est une liste de type double on va ajouter a cette liste les posologies écrite par l'utilisateur grâce a posologieController de notre textField.
+puis ListeDesDose on lui ajouter l'élément i (médicament i ) de ListeDesPosologie X surface corporelle de médicament i de la dernière ordonnance (protocole).
+après on a ListeDesVolumesFinale de type double on lui ajouter dose/concentration Initiale.
+on sait déjà que les attributs reliquat et date de conservation sont des attribut de la classe médicament.
+la calcul de reliquat ca dépend le cas.
+le cas ou le reliquat est null.
+date de conservation reçoit le jour-heures de l'instant de conservation , puis on ajoute le nombre des flacons a  ListeNombreFlacon par le calcul de volume finale / présentation on prend l'entier de résultat et on lui ajoutant 1, et puis l'attribut reliquat reçoit (nombre de flacon / présentation ) - volume finale.
+
+dans le cas ou il ya une reliquat on test si cette reliquat est encore utilisable si oui lorsque on calcule le nombre de flacon ou la nouvelle reliquat en prend en considération le reliquat dans les calculs et soustraire cette reliquat a partir de volume finale, sinon si le reliquat est périmé donc on prend pas cette valeur en considération dans les calculs.
+
+
+\section{Conclusion}
+\paragraph{}Ce chapitre a était consacré a la phase de réalisation , on a citer les outils logiciels et matériels qu'on a utiliser pour développer cette application , puis on a expliquer le processus d'utilisation de l'application avec des captures d'écran et a la fin on ajouter une partie de code source avec explication.
+
+\newpage
+\begin{center}
+	\textsf{ \huge \textbf{Conclusion Générale}}
+\end{center}
+\addcontentsline{toc}{chapter}{Conclusion Générale}
+\large \paragraph{} 
+Nous sommes parvenus, par le biais de ce projet, à réaliser une application qui fonctionne sous Android qui permet aux opérateurs pharmaciens de préparer une solution de médicaments pour perfusion d'un malade, à partir d'une base de données de médicaments (locale).
+\paragraph{}Au cours de la phase d'analyse nous avons structuré et défini les besoins du système.
+Il s'agit de formuler, d'affiner et d'analyser la pluparts des cas d'utilisations par les diagrammes UML.
+La phase de conception suit immédiatement la phase d'analyse, il s'agit alors d'étendre la représentation effectuée au niveau de l'analyse en y intégrant les aspects techniques les plus proches des préoccupations des besoins techniques. L'élément principal à livrer au terme de cette phase est le diagramme de classe.
+Enfin, nous avons entamé la réalisation en utilisant les outils de développement matériels et logiciels et présenter les différentes interfaces de notre application.
+\paragraph{}Malgré toutes les difficultés que nous avons rencontrées durant la réalisation de cette mémoire,ce travail nous a permis d'apprendre énormément de choses concernant le développement sous Android, et ce mémoire présente notre première expérience pour la mise en œuvre d'une application mobile, également nous avons appris à manipuler toute les d'outils: Android studio , Language de programmation Dart Avec La Framework Flutter , SQLite et d'autres outils . . . 
+\paragraph{}Enfin, nous souhaitons que ce modeste travail satisfera les utilisateurs et apportera un maximum d’aide et pourra être bénéfique et utile. 
+
+\begin{thebibliography}{...}
+
+		\bibitem[1]{} \url{https://flutter.dev/}
+		\bibitem[2]{} \url{https://www.youtube.com/flutterdev}
+		\bibitem[3]{} \url{https://vogella.developpez.com/} 
+		\bibitem[4]{} \url{https://fr.wikipedia.org/wiki/Dart_(langage)} 
+		\bibitem[5]{} \url{https://www.frandroid.com/}
+		\bibitem[6]{} \url{https://www.uml-sysml.org}
+		\bibitem[7]{} \url{https://fr.wikipedia.org/wiki/Android_Studio#}
+		
+\end{thebibliography}
+\addcontentsline{toc}{section}{\textbf{Bibliographie}}
+
+	
+
+ 
+
+
+
+\end{document}
